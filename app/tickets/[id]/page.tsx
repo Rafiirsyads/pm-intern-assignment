@@ -103,23 +103,23 @@ export default function TicketDetailPage({ params }: TicketDetailPageProps) {
         {/* Main content */}
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="bg-white border-b px-6 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
+          <div className="bg-card border-b border-border px-6 py-4">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-4 min-w-0">
                 <Link href="/tickets">
-                  <Button variant="ghost" size="icon-sm">
+                  <Button variant="ghost" size="icon-sm" className="shrink-0">
                     <ArrowLeft className="size-5" />
                   </Button>
                 </Link>
-                <div>
-                  <div className="flex items-center gap-3">
-                    <h1 className="text-xl font-semibold">{ticket.title}</h1>
-                    <Badge className={categoryColors[ticket.category]}>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <h1 className="text-lg font-semibold truncate">{ticket.title}</h1>
+                    <Badge className={`${categoryColors[ticket.category]} shrink-0`}>
                       {ticket.category.charAt(0).toUpperCase() + ticket.category.slice(1)}
                     </Badge>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
-                    <span>{ticket.id}</span>
+                    <span className="font-mono">{ticket.id}</span>
                     <span>·</span>
                     <span className="flex items-center gap-1">
                       <Clock className="size-3.5" />
@@ -128,14 +128,14 @@ export default function TicketDetailPage({ params }: TicketDetailPageProps) {
                   </div>
                 </div>
               </div>
-              <Link href={`/tickets/${ticket.id}/summary`}>
-                <Button variant="outline">Close Ticket</Button>
+              <Link href={`/tickets/${ticket.id}/summary`} className="shrink-0">
+                <Button variant="outline" className="bg-card">Close Ticket</Button>
               </Link>
             </div>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-auto p-6 bg-slate-50">
+          <div className="flex-1 overflow-auto p-6 bg-background">
             <div className="max-w-3xl mx-auto space-y-6">
               {messages.map((message) => (
                 <MessageBubble
@@ -148,7 +148,7 @@ export default function TicketDetailPage({ params }: TicketDetailPageProps) {
           </div>
 
           {/* Composer */}
-          <div className="p-6 bg-slate-50">
+          <div className="p-6 bg-background border-t border-border">
             <div className="max-w-3xl mx-auto">
               <ReplyComposer
                 onSend={handleSendMessage}
@@ -161,8 +161,8 @@ export default function TicketDetailPage({ params }: TicketDetailPageProps) {
         </div>
 
         {/* Right sidebar */}
-        <div className="w-96 border-l bg-slate-50 overflow-auto">
-          <div className="p-6 space-y-6">
+        <div className="w-96 border-l border-border bg-secondary/30 overflow-auto">
+          <div className="p-5 space-y-5">
             <CustomerDetails customer={ticket.customer} order={ticket.order} />
             
             {/* Pre-Send Intelligence - shows ABOVE AI Resolution Card when active */}

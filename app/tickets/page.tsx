@@ -14,17 +14,17 @@ const statsCards = [
 export default function TicketsPage() {
   return (
     <AppLayout>
-      <div className="p-8">
-        <h1 className="text-3xl font-bold text-foreground mb-6">Tickets</h1>
+      <div className="p-6 lg:p-8">
+        <h1 className="text-2xl font-semibold text-foreground mb-6">Tickets</h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          {statsCards.map((stat) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          {statsCards.map((stat, index) => (
             <div
               key={stat.label}
-              className="bg-white rounded-xl border p-5 shadow-sm"
+              className="bg-card rounded-xl border border-border p-5 shadow-sm hover:shadow-md transition-shadow"
             >
-              <p className="text-sm text-muted-foreground mb-1 truncate">{stat.label}</p>
-              <p className="text-3xl font-bold text-foreground">{stat.value}</p>
+              <p className="text-sm text-muted-foreground mb-2 truncate">{stat.label}</p>
+              <p className={`text-3xl font-semibold ${index === 1 ? 'text-red-600' : 'text-foreground'}`}>{stat.value}</p>
             </div>
           ))}
         </div>
@@ -35,16 +35,16 @@ export default function TicketsPage() {
             <input
               type="text"
               placeholder="Search tickets..."
-              className="w-full h-10 pl-10 pr-4 rounded-lg border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-ring shadow-sm"
+              className="w-full h-10 pl-10 pr-4 rounded-lg border border-border bg-card text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-shadow"
             />
           </div>
-          <Button variant="outline" className="gap-2 shadow-sm shrink-0">
+          <Button variant="outline" className="gap-2 shrink-0 bg-card hover:bg-secondary">
             <SlidersHorizontal className="size-4" />
             Filters
           </Button>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           {tickets.map((ticket) => (
             <TicketCard key={ticket.id} ticket={ticket} />
           ))}

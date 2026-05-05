@@ -48,27 +48,27 @@ export default function SummaryPage({ params }: SummaryPageProps) {
 
   return (
     <AppLayout>
-      <div className="p-8 max-w-4xl mx-auto">
+      <div className="p-6 lg:p-8 max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
           <Link href={`/tickets/${ticket.id}`}>
-            <Button variant="ghost" size="icon-sm">
+            <Button variant="ghost" size="icon-sm" className="shrink-0">
               <ArrowLeft className="size-5" />
             </Button>
           </Link>
-          <div>
-            <div className="flex items-center gap-3">
-              <h1 className="text-xl font-semibold">{ticket.title}</h1>
-              <Badge className={categoryColors[ticket.category]}>
+          <div className="min-w-0">
+            <div className="flex items-center gap-3 flex-wrap">
+              <h1 className="text-lg font-semibold truncate">{ticket.title}</h1>
+              <Badge className={`${categoryColors[ticket.category]} shrink-0`}>
                 {ticket.category.charAt(0).toUpperCase() + ticket.category.slice(1)}
               </Badge>
             </div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
-              <span>{ticket.id}</span>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1 flex-wrap">
+              <span className="font-mono">{ticket.id}</span>
               <span>·</span>
-              <span>{ticket.customer.name}</span>
+              <span className="truncate">{ticket.customer.name}</span>
               <span>·</span>
-              <span className="flex items-center gap-1">
+              <span className="flex items-center gap-1 shrink-0">
                 <Clock className="size-3.5" />
                 {ticket.createdAt}
               </span>
@@ -77,26 +77,26 @@ export default function SummaryPage({ params }: SummaryPageProps) {
         </div>
 
         {/* Issue Summary Card */}
-        <div className="bg-white rounded-xl border p-6 mb-6">
-          <div className="flex items-center gap-2 mb-4">
-            <FileText className="size-5" />
-            <h2 className="text-lg font-semibold">Issue Summary</h2>
+        <div className="bg-card rounded-xl border border-border p-6 mb-6 shadow-sm">
+          <div className="flex items-center gap-2 mb-5">
+            <FileText className="size-5 text-muted-foreground" />
+            <h2 className="text-base font-semibold">Issue Summary</h2>
           </div>
 
           <div className="grid grid-cols-2 gap-6 mb-4">
             <div>
-              <p className="text-sm text-muted-foreground mb-1">Customer Name</p>
+              <p className="text-xs text-muted-foreground mb-1.5 font-medium uppercase tracking-wide">Customer Name</p>
               <p className="font-medium">Sarah Chen</p>
             </div>
           </div>
 
           <div className="mb-4">
-            <p className="text-sm text-muted-foreground mb-1">Issue Type</p>
+            <p className="text-xs text-muted-foreground mb-1.5 font-medium uppercase tracking-wide">Issue Type</p>
             <p className="font-medium">Damaged Item - Refund Request</p>
           </div>
 
           <div className="mb-6">
-            <p className="text-sm text-muted-foreground mb-1">Issue Description</p>
+            <p className="text-xs text-muted-foreground mb-1.5 font-medium uppercase tracking-wide">Issue Description</p>
             <p className="text-sm text-foreground leading-relaxed">
               Customer received damaged product (Order #{ticket.id}) and requested a full refund with timeline information.
               Damage was reported with photo evidence within policy window.
@@ -105,84 +105,84 @@ export default function SummaryPage({ params }: SummaryPageProps) {
 
           <div className="grid grid-cols-3 gap-6">
             <div>
-              <p className="text-sm text-muted-foreground mb-1">Priority</p>
+              <p className="text-xs text-muted-foreground mb-1.5 font-medium uppercase tracking-wide">Priority</p>
               <Badge className="bg-red-500 text-white border-red-500">HIGH</Badge>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground mb-1">Category</p>
+              <p className="text-xs text-muted-foreground mb-1.5 font-medium uppercase tracking-wide">Category</p>
               <p className="font-medium">Damaged Item</p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground mb-1">Order Value</p>
+              <p className="text-xs text-muted-foreground mb-1.5 font-medium uppercase tracking-wide">Order Value</p>
               <p className="font-medium">{formatCurrency(ticket.order.total)}</p>
             </div>
           </div>
         </div>
 
         {/* Resolution Outcome Card */}
-        <div className="bg-white rounded-xl border p-6 mb-6">
-          <div className="flex items-center gap-2 mb-4">
-            <CheckCircle2 className="size-5 text-emerald-500" />
-            <h2 className="text-lg font-semibold">Resolution Outcome</h2>
+        <div className="bg-card rounded-xl border border-border p-6 mb-6 shadow-sm">
+          <div className="flex items-center gap-2 mb-5">
+            <CheckCircle2 className="size-5 text-primary" />
+            <h2 className="text-base font-semibold">Resolution Outcome</h2>
           </div>
 
-          <div className="bg-emerald-50 rounded-lg p-4 mb-4">
-            <p className="text-emerald-700 font-semibold mb-3">Full Refund Approved</p>
+          <div className="bg-primary/10 rounded-lg p-4 mb-5">
+            <p className="text-primary font-semibold mb-3">Full Refund Approved</p>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-emerald-600">Refund Amount:</span>
-                <span className="text-emerald-700 font-medium">{formatCurrency(ticket.order.total)}</span>
+                <span className="text-primary/80">Refund Amount:</span>
+                <span className="text-primary font-medium">{formatCurrency(ticket.order.total)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-emerald-600">Refund Method:</span>
-                <span className="text-emerald-700 font-medium">Original Payment Method</span>
+                <span className="text-primary/80">Refund Method:</span>
+                <span className="text-primary font-medium">Original Payment Method</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-emerald-600">Processing Time:</span>
-                <span className="text-emerald-700 font-medium">3-5 business days</span>
+                <span className="text-primary/80">Processing Time:</span>
+                <span className="text-primary font-medium">3-5 business days</span>
               </div>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-6">
             <div>
-              <p className="text-sm text-muted-foreground mb-1">Resolution Method</p>
-              <p className="font-medium">Instant Approval via AI Recommendation</p>
+              <p className="text-xs text-muted-foreground mb-1.5 font-medium uppercase tracking-wide">Resolution Method</p>
+              <p className="font-medium text-sm">Instant Approval via AI Recommendation</p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground mb-1">Policy Applied</p>
-              <p className="font-medium">Damaged Item Refund Policy v2.3</p>
+              <p className="text-xs text-muted-foreground mb-1.5 font-medium uppercase tracking-wide">Policy Applied</p>
+              <p className="font-medium text-sm">Damaged Item Refund Policy v2.3</p>
             </div>
           </div>
         </div>
 
         {/* Internal Notes Card */}
-        <div className="bg-white rounded-xl border p-6 mb-6">
-          <div className="flex items-center gap-2 mb-4">
-            <FileText className="size-5" />
-            <h2 className="text-lg font-semibold">Internal Notes</h2>
+        <div className="bg-card rounded-xl border border-border p-6 mb-6 shadow-sm">
+          <div className="flex items-center gap-2 mb-5">
+            <FileText className="size-5 text-muted-foreground" />
+            <h2 className="text-base font-semibold">Internal Notes</h2>
           </div>
 
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-5">
             <div className="flex items-center gap-2 text-amber-700 mb-3">
               <Sparkles className="size-4" />
               <span className="text-sm font-semibold">AI-Generated Summary</span>
             </div>
             <ul className="space-y-2">
               {aiGeneratedNotes.map((note, index) => (
-                <li key={index} className="text-sm text-foreground flex items-start gap-2">
-                  <span className="text-amber-600">•</span>
-                  {note}
+                <li key={index} className="text-sm text-foreground flex items-start gap-2 leading-relaxed">
+                  <span className="text-amber-600 shrink-0">•</span>
+                  <span>{note}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <p className="text-sm text-muted-foreground mb-2">Add Additional Notes (Optional)</p>
+            <p className="text-xs text-muted-foreground mb-2 font-medium uppercase tracking-wide">Add Additional Notes (Optional)</p>
             <textarea
               placeholder="Add any additional context, observations, or notes for your team..."
-              className="w-full h-24 p-3 border rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-ring"
+              className="w-full h-24 p-3 border border-border rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-ring bg-background placeholder:text-muted-foreground"
             />
             <p className="text-xs text-muted-foreground mt-2">
               These notes will be visible to all agents who access this ticket in the future
@@ -191,28 +191,28 @@ export default function SummaryPage({ params }: SummaryPageProps) {
         </div>
 
         {/* Finalize Case Card */}
-        <div className="bg-white rounded-xl border p-6">
-          <h2 className="text-lg font-semibold mb-4">Finalize Case</h2>
+        <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+          <h2 className="text-base font-semibold mb-5">Finalize Case</h2>
           
-          <div className="grid grid-cols-3 gap-4 mb-4">
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
               <CheckCircle2 className="size-4" />
               Close Case
             </Button>
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white gap-2">
+            <Button className="bg-amber-500 hover:bg-amber-600 text-white gap-2">
               <AlertTriangle className="size-4" />
-              Escalate to Supervisor
+              Escalate
             </Button>
-            <Button className="bg-slate-700 hover:bg-slate-800 text-white gap-2">
+            <Button className="bg-foreground hover:bg-foreground/90 text-background gap-2">
               <Calendar className="size-4" />
-              Schedule Follow-Up
+              Follow-Up
             </Button>
           </div>
 
-          <div className="text-center">
+          <div className="text-center pt-2 border-t border-border">
             <Link 
               href={`/tickets/${ticket.id}`}
-              className="text-sm text-muted-foreground hover:text-foreground inline-flex items-center gap-1"
+              className="text-sm text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 pt-4"
             >
               <ArrowLeft className="size-3.5" />
               Back to Case Details

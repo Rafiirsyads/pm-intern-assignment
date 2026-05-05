@@ -31,46 +31,49 @@ export function AppSidebar() {
   }
 
   return (
-    <aside className="flex flex-col w-56 min-h-screen border-r bg-background">
+    <aside className="flex flex-col w-56 min-h-screen border-r border-border bg-card">
       <div className="p-6">
-        <Link href="/" className="flex items-center gap-2">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-primary"
-          >
-            <path
-              d="M12 2L2 7L12 12L22 7L12 2Z"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M2 17L12 22L22 17"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M2 12L12 17L22 12"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <span className="font-semibold text-lg">
-            PARAGON<span className="text-muted-foreground">CORP</span>
+        <Link href="/" className="flex items-center gap-2.5">
+          <div className="size-8 rounded-lg bg-primary flex items-center justify-center">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="text-primary-foreground"
+            >
+              <path
+                d="M12 2L2 7L12 12L22 7L12 2Z"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M2 17L12 22L22 17"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M2 12L12 17L22 12"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          <span className="font-semibold text-base tracking-tight">
+            Paragon<span className="text-muted-foreground font-normal">Corp</span>
           </span>
         </Link>
       </div>
 
       <nav className="flex-1 px-3">
+        <p className="px-3 mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">Menu</p>
         <ul className="space-y-1">
           {navItems.map((item) => {
             const Icon = item.icon
@@ -80,13 +83,13 @@ export function AppSidebar() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
+                    "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all",
                     active
-                      ? "bg-slate-100 text-foreground"
-                      : "text-muted-foreground hover:bg-slate-50 hover:text-foreground"
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                   )}
                 >
-                  <Icon className="size-5" />
+                  <Icon className="size-4" />
                   {item.label}
                 </Link>
               </li>
@@ -96,6 +99,7 @@ export function AppSidebar() {
       </nav>
 
       <div className="px-3 pb-6">
+        <div className="border-t border-border pt-4 mb-2" />
         <ul className="space-y-1">
           {bottomItems.map((item) => {
             const Icon = item.icon
@@ -103,9 +107,9 @@ export function AppSidebar() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-slate-50 hover:text-foreground transition-colors"
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary hover:text-foreground transition-all"
                 >
-                  <Icon className="size-5" />
+                  <Icon className="size-4" />
                   {item.label}
                 </Link>
               </li>
