@@ -18,9 +18,9 @@ const priorityColors: Record<string, string> = {
 }
 
 const statusConfig: Record<string, { label: string; className: string }> = {
-  new: { label: "New", className: "border-green-500 text-green-600 bg-white" },
-  "in-progress": { label: "In Progress", className: "border-orange-500 text-orange-600 bg-white" },
-  closed: { label: "Closed", className: "border-gray-400 text-gray-500 bg-white" },
+  new: { label: "New", className: "border-green-500 text-green-600 bg-green-50" },
+  "in-progress": { label: "In Progress", className: "border-orange-500 text-orange-600 bg-orange-50" },
+  closed: { label: "Closed", className: "border-gray-400 text-gray-500 bg-gray-50" },
 }
 
 interface TicketCardProps {
@@ -31,42 +31,42 @@ export function TicketCard({ ticket }: TicketCardProps) {
   const status = statusConfig[ticket.status]
 
   return (
-    <Link href={`/tickets/${ticket.id}`} className="block">
-      <div className="bg-white rounded-xl border shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+    <Link href={`/tickets/${ticket.id}`} className="block group">
+      <div className="bg-card rounded-xl border border-border shadow-sm hover:shadow-md hover:border-border/80 transition-all cursor-pointer">
         <div className="p-5">
-          <div className="flex items-start justify-between mb-3">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-sm text-muted-foreground">{ticket.id}</span>
-              <Badge className={cn("capitalize text-xs", categoryColors[ticket.category])}>
+          <div className="flex items-start justify-between gap-3 mb-3">
+            <div className="flex items-center gap-2 flex-wrap min-w-0">
+              <span className="text-sm text-muted-foreground font-mono">{ticket.id}</span>
+              <Badge className={cn("capitalize text-xs font-medium", categoryColors[ticket.category])}>
                 {ticket.category}
               </Badge>
-              <Badge className={cn("capitalize text-xs", priorityColors[ticket.priority])}>
+              <Badge className={cn("capitalize text-xs font-medium", priorityColors[ticket.priority])}>
                 {ticket.priority}
               </Badge>
             </div>
-            <Badge variant="outline" className={cn("text-xs", status.className)}>
+            <Badge variant="outline" className={cn("text-xs shrink-0", status.className)}>
               {status.label}
             </Badge>
           </div>
 
-          <h3 className="font-semibold text-lg text-foreground mb-1">{ticket.title}</h3>
+          <h3 className="font-semibold text-base text-foreground mb-1.5 line-clamp-1">{ticket.title}</h3>
           
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <span>{ticket.customer.name}</span>
-            <span>·</span>
-            <span className="flex items-center gap-1">
+            <span className="truncate max-w-[150px]">{ticket.customer.name}</span>
+            <span className="shrink-0">·</span>
+            <span className="flex items-center gap-1 shrink-0">
               <Clock className="size-3.5" />
               {ticket.createdAt}
             </span>
           </div>
         </div>
 
-        <div className="border-t px-5 py-3 flex items-center justify-between gap-4">
+        <div className="border-t border-border bg-secondary/30 px-5 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-sm text-muted-foreground min-w-0">
-            <Sparkles className="size-4 shrink-0" />
+            <Sparkles className="size-4 shrink-0 text-primary" />
             <span className="truncate">AI: {ticket.aiSuggestion}</span>
           </div>
-          <span className="flex items-center gap-1 text-sm font-medium text-foreground shrink-0">
+          <span className="flex items-center gap-1 text-sm font-medium text-primary shrink-0 group-hover:gap-2 transition-all">
             Open
             <ArrowRight className="size-4" />
           </span>
