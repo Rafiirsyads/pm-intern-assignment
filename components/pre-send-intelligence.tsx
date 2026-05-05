@@ -69,15 +69,15 @@ export function PreSendIntelligence({ data, onAddSuggestion, onClose }: PreSendI
             )}
 
             {/* Passed Checks */}
-            <div className="border border-border rounded-lg p-3">
+            <div className="border border-emerald-200 bg-emerald-50 rounded-lg p-3">
               <div className="flex items-center gap-2 mb-3">
-                <CheckCircle2 className="size-4 text-primary" />
-                <span className="text-sm font-medium">Passed Checks</span>
+                <CheckCircle2 className="size-4 text-emerald-600" />
+                <span className="text-sm font-semibold text-emerald-800">Passed Checks</span>
               </div>
               <div className="space-y-2">
                 {data.passedChecks.map((check, index) => (
-                  <div key={index} className="flex items-start gap-2 text-sm text-primary">
-                    <CheckCircle2 className="size-3.5 mt-0.5 shrink-0" />
+                  <div key={index} className="flex items-start gap-2 text-sm text-emerald-700">
+                    <CheckCircle2 className="size-3.5 mt-0.5 shrink-0 text-emerald-500" />
                     <span className="leading-tight">{check}</span>
                   </div>
                 ))}
@@ -98,15 +98,15 @@ export function PreSendIntelligence({ data, onAddSuggestion, onClose }: PreSendI
           </>
         ) : (
           /* Reply Looks Great - all checks passed */
-          <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
-            <div className="flex items-center gap-2 text-primary mb-3">
-              <CheckCircle2 className="size-5" />
-              <span className="font-semibold">Reply Looks Great!</span>
+          <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+            <div className="flex items-center gap-2 text-emerald-700 mb-3">
+              <CheckCircle2 className="size-5 text-emerald-500" />
+              <span className="font-semibold text-emerald-800">Reply Looks Great!</span>
             </div>
             <div className="space-y-2">
               {data.passedChecks.map((check, index) => (
-                <div key={index} className="flex items-start gap-2 text-sm text-primary">
-                  <CheckCircle2 className="size-3.5 mt-0.5 shrink-0" />
+                <div key={index} className="flex items-start gap-2 text-sm text-emerald-700">
+                  <CheckCircle2 className="size-3.5 mt-0.5 shrink-0 text-emerald-500" />
                   <span className="leading-tight">{check}</span>
                 </div>
               ))}

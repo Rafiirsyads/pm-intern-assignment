@@ -56,25 +56,26 @@ Customer Support Team`
             <p className="text-xs text-muted-foreground mb-1 font-medium">Detected Intent</p>
             <p className="text-sm font-medium text-foreground">{resolution.detectedIntent}</p>
           </div>
-          <div className="bg-primary text-primary-foreground rounded-lg p-3 min-w-[100px]">
-            <p className="text-xs opacity-90 mb-1">AI Confidence</p>
-            <p className="text-sm font-semibold">{resolution.confidence}%</p>
+          <div className="bg-emerald-500 text-white rounded-lg p-3 min-w-[110px] flex flex-col justify-center">
+            <p className="text-xs opacity-90 mb-0.5">AI Confidence</p>
+            <p className="text-2xl font-bold leading-none">{resolution.confidence}%</p>
+            <p className="text-xs opacity-80 mt-0.5">Very High</p>
           </div>
         </div>
 
         {/* Policy Match */}
-        <div className="border border-border rounded-lg p-3">
+        <div className="border border-emerald-200 bg-emerald-50 rounded-lg p-3">
           <div className="flex items-center gap-2 mb-2">
-            <CheckCircle2 className="size-4 text-primary" />
-            <span className="text-sm font-medium">Refund Policy Match</span>
+            <CheckCircle2 className="size-4 text-emerald-600" />
+            <span className="text-sm font-semibold text-emerald-800">Refund Policy Match</span>
           </div>
-          <p className="text-sm mb-2">
-            Customer is <span className="text-primary font-medium">eligible for full refund</span>
+          <p className="text-sm mb-2 text-emerald-700">
+            Customer is <span className="font-semibold">eligible for full refund</span>
           </p>
           <div className="space-y-1.5">
             {resolution.policyMatch.reasons.map((reason, index) => (
-              <div key={index} className="flex items-start gap-2 text-sm text-primary">
-                <CheckCircle2 className="size-3.5 mt-0.5 shrink-0" />
+              <div key={index} className="flex items-start gap-2 text-sm text-emerald-700">
+                <CheckCircle2 className="size-3.5 mt-0.5 shrink-0 text-emerald-500" />
                 <span className="leading-tight">{reason}</span>
               </div>
             ))}
@@ -82,13 +83,13 @@ Customer Support Team`
         </div>
 
         {/* Recommended Action */}
-        <div className="bg-primary text-primary-foreground rounded-lg p-4">
+        <div className="bg-emerald-600 text-white rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
             <Sparkles className="size-4" />
             <span className="text-sm font-semibold">Recommended Action</span>
           </div>
           <p className="text-sm mb-2 leading-relaxed">{resolution.recommendedAction}</p>
-          <p className="text-xs opacity-80">
+          <p className="text-xs opacity-75">
             Based on {resolution.similarCases} similar cases · {resolution.satisfactionRate}% satisfaction rate
           </p>
         </div>
@@ -96,17 +97,17 @@ Customer Support Team`
         {/* Action Buttons */}
         <div className="space-y-2">
           <Button 
-            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
+            className="w-full bg-emerald-500 hover:bg-emerald-600 text-white gap-2 font-semibold shadow-sm"
             onClick={handleApproveRefund}
           >
             <Check className="size-4" />
             Approve Refund
           </Button>
           <div className="grid grid-cols-2 gap-2">
-            <Button variant="outline" className="text-sm bg-card">
+            <Button variant="outline" className="text-sm bg-card text-amber-600 border-amber-300 hover:bg-amber-50">
               More Evidence
             </Button>
-            <Button variant="outline" className="text-sm bg-card">
+            <Button variant="outline" className="text-sm bg-card text-orange-600 border-orange-300 hover:bg-orange-50">
               Escalate
             </Button>
           </div>
@@ -168,7 +169,7 @@ Customer Support Team`
                     <span className="text-muted-foreground">Status:</span>
                     <span className={cn(
                       "flex items-center gap-1 font-medium",
-                      resolution.timeline.withinWindow ? "text-primary" : "text-destructive"
+                      resolution.timeline.withinWindow ? "text-emerald-600" : "text-destructive"
                     )}>
                       Within 72h window
                       {resolution.timeline.withinWindow && <Check className="size-3" />}

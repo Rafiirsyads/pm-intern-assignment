@@ -122,24 +122,27 @@ export default function SummaryPage({ params }: SummaryPageProps) {
         {/* Resolution Outcome Card */}
         <div className="bg-card rounded-xl border border-border p-6 mb-6 shadow-sm">
           <div className="flex items-center gap-2 mb-5">
-            <CheckCircle2 className="size-5 text-primary" />
+            <CheckCircle2 className="size-5 text-emerald-500" />
             <h2 className="text-base font-semibold">Resolution Outcome</h2>
           </div>
 
-          <div className="bg-primary/10 rounded-lg p-4 mb-5">
-            <p className="text-primary font-semibold mb-3">Full Refund Approved</p>
+          <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-5">
+            <div className="flex items-center gap-2 mb-3">
+              <CheckCircle2 className="size-5 text-emerald-600" />
+              <p className="text-emerald-800 font-semibold">Full Refund Approved</p>
+            </div>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-primary/80">Refund Amount:</span>
-                <span className="text-primary font-medium">{formatCurrency(ticket.order.total)}</span>
+                <span className="text-emerald-700/80">Refund Amount:</span>
+                <span className="text-emerald-800 font-semibold">{formatCurrency(ticket.order.total)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-primary/80">Refund Method:</span>
-                <span className="text-primary font-medium">Original Payment Method</span>
+                <span className="text-emerald-700/80">Refund Method:</span>
+                <span className="text-emerald-800 font-medium">Original Payment Method</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-primary/80">Processing Time:</span>
-                <span className="text-primary font-medium">3-5 business days</span>
+                <span className="text-emerald-700/80">Processing Time:</span>
+                <span className="text-emerald-800 font-medium">3-5 business days</span>
               </div>
             </div>
           </div>
@@ -195,7 +198,7 @@ export default function SummaryPage({ params }: SummaryPageProps) {
           <h2 className="text-base font-semibold mb-5">Finalize Case</h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
+            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white gap-2 font-semibold shadow-sm">
               <CheckCircle2 className="size-4" />
               Close Case
             </Button>
@@ -203,7 +206,7 @@ export default function SummaryPage({ params }: SummaryPageProps) {
               <AlertTriangle className="size-4" />
               Escalate
             </Button>
-            <Button className="bg-foreground hover:bg-foreground/90 text-background gap-2">
+            <Button variant="outline" className="gap-2 bg-card text-foreground hover:bg-secondary">
               <Calendar className="size-4" />
               Follow-Up
             </Button>
