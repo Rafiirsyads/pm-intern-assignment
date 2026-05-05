@@ -2,11 +2,11 @@
 
 import { use } from "react"
 import Link from "next/link"
-import { 
-  ArrowLeft, 
-  Clock, 
-  FileText, 
-  CheckCircle2, 
+import {
+  ArrowLeft,
+  Clock,
+  FileText,
+  CheckCircle2,
   Sparkles,
   AlertTriangle,
   Calendar
@@ -31,7 +31,7 @@ interface SummaryPageProps {
 export default function SummaryPage({ params }: SummaryPageProps) {
   const { id } = use(params)
   const ticket = getTicketById(id)
-  
+
   if (!ticket) {
     notFound()
   }
@@ -98,7 +98,7 @@ export default function SummaryPage({ params }: SummaryPageProps) {
           <div className="mb-6">
             <p className="text-xs text-muted-foreground mb-1.5 font-medium uppercase tracking-wide">Issue Description</p>
             <p className="text-sm text-foreground leading-relaxed">
-              Customer received damaged product (Order #{ticket.id}) and requested a full refund with timeline information.
+              Customer received damaged product and requested a full refund with timeline information.
               Damage was reported with photo evidence within policy window.
             </p>
           </div>
@@ -196,7 +196,7 @@ export default function SummaryPage({ params }: SummaryPageProps) {
         {/* Finalize Case Card */}
         <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
           <h2 className="text-base font-semibold mb-5">Finalize Case</h2>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
             <Button className="bg-emerald-500 hover:bg-emerald-600 text-white gap-2 font-semibold shadow-sm">
               <CheckCircle2 className="size-4" />
@@ -213,7 +213,7 @@ export default function SummaryPage({ params }: SummaryPageProps) {
           </div>
 
           <div className="text-center pt-2 border-t border-border">
-            <Link 
+            <Link
               href={`/tickets/${ticket.id}`}
               className="text-sm text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 pt-4"
             >
