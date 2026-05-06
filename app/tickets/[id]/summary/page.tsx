@@ -86,7 +86,7 @@ export default function SummaryPage({ params }: SummaryPageProps) {
           <div className="grid grid-cols-2 gap-6 mb-4">
             <div>
               <p className="text-xs text-muted-foreground mb-1.5 font-medium uppercase tracking-wide">Customer Name</p>
-              <p className="font-medium">Sarah Chen</p>
+              <p className="font-medium">John Wells</p>
             </div>
           </div>
 
